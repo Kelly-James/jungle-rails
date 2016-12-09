@@ -85,6 +85,9 @@ main section.products-show {
   }
 }
 
-nav span.user-auth {
-  line-height: 50px;
+.empty {
+  padding: 10px;
+  h2 {
+    margin: 0 0 10px;
+  }
 }
