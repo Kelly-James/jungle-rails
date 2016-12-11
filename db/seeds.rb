@@ -35,7 +35,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+prod1 = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -43,7 +43,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+prod4 = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -84,7 +84,7 @@ cat1.products.create!({
 })
 
 
-cat2.products.create!({
+prod2 = cat2.products.create!({
   name:  'Modern Skateboards',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics1.jpg'),
@@ -92,7 +92,7 @@ cat2.products.create!({
   price: 164.49
 })
 
-cat2.products.create!({
+prod5 = cat2.products.create!({
   name:  'Hotdog Slicer',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics2.jpg'),
@@ -124,7 +124,7 @@ cat3.products.create!({
   price: 987.65
 })
 
-cat3.products.create!({
+prod3 = cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
@@ -132,5 +132,18 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+salt = BCrypt::Engine.generate_salt
+
+User.create(first_name: 'Garth', last_name: 'Vader', email: 'cheeserulez@me.com', password_digest: BCrypt::Engine.hash_secret('password', salt))
+
+prod1.reviews.create(rating: 2, description: "I hate this shirt because I am against child labour.", user: User.first)
+
+prod2.reviews.create(rating: 1, description: "I had more fun with real skateboards when I wasn't old.", user: User.first)
+
+prod3.reviews.create(rating: 4, description: "Its red", user: User.first)
+
+prod4.reviews.create(rating: 1, description: "I got attacked by a dog.", user: User.first)
+
+prod5.reviews.create(rating: 4, description: "I don't know what I was expecting.", user: User.first)
 
 puts "DONE!"
