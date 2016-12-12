@@ -1,12 +1,20 @@
 <h1>Sign Up!</h1>
 
-<%= form_for :user, url: :signup do |f| %>
+<div class="row">
 
-  First Name: <%= f.text_field :first_name %>
-  Last Name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+  <%= form_for :user, url: :signup do |f| %>
 
-<% end %>
+    <label>First Name: </label>
+      <div><%= f.text_field :first_name, :autofocus => true %></div>
+    <label>Last Name: </label>
+      <div><%= f.text_field :last_name %></div>
+    <label>Email: </label>
+      <div><%= f.text_field :email %></div>
+    <label>Password: </label>
+      <div><%= f.password_field :password %></div>
+    <label>Password Confirmation: </label>
+      <div><%= f.password_field :password_confirmation %></div><br>
+    <%= f.submit "Submit" %>
+
+  <% end %>
+</div>
