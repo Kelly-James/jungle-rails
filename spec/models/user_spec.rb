@@ -30,6 +30,7 @@ RSpec.describe User, type: :model do
                         first_name: 'Frankie',
                         last_name: 'Frog')
       expect(@user[:password_digest]).to_not match(@user1[:password_digest])
+      # expect(@user1).to_not be_valid
       # user = User.new password: 'short', password_confirmation: 'long'
       # expect(user).to_not be_valid
     end
