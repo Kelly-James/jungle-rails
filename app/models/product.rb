@@ -7,11 +7,14 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   validates :name, presence: true
-  validates :price, presence: true
-  validates :quantity, presence: true
+  validates :price,
+    presence: true,
+    numericality: true
+  validates :quantity,
+    presence: true,
+    numericality: { only_integer: true }
   validates :category, presence: true
 
-  validates :user_id, presence: true
   accepts_nested_attributes_for :reviews
 
   def sold_out?
